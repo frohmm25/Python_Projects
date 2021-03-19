@@ -1,0 +1,55 @@
+def rec_dig_sum(n):
+    '''
+    Returns the recursive digit sum of an integer.
+
+    Parameter
+    ---------
+    n: int
+
+    Returns
+    -------
+    rec_dig_sum: int
+       the recursive digit sum of the input n
+    '''
+    n=str(n)
+    if len(n)==1:
+        return int(n)
+    else:
+        dig_sum = 0
+        for i in n:
+            dig_sum += int(i)
+        n = dig_sum
+        return rec_dig_sum(n)
+    
+        
+def distr_of_rec_digit_sums(low=0, high=1500):
+    '''
+    Returns a dictionary representing the counts
+    of recursive digit sums within a given range.
+
+    Parameters
+    ----------
+    low: int
+        an integer, 0 or positive, representing
+        the lowest value in the range of integers
+        for which finding the recursive digit sum
+    high: int
+        a positive integer greater than low, the
+        inclusive upper bound for which finding
+        the recursive digit sum
+
+    Returns
+    -------
+    dict_of_rec_dig_sums: {int:int}
+        returns a dictionary where the keys are
+        the recursive digit sums and the values
+        are the counts of those digit sums occurring
+    '''
+    dictionary = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
+    nums = []
+
+    for i in range(low,high+1):
+        nums.append(rec_dig_sum(i))
+    for i in range(0,10):
+        dictionary[i] = (nums.count(i))
+    return(dictionary)
