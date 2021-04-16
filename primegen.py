@@ -1,4 +1,7 @@
 def isprime(x):
+    if x < 2:
+        return False
+    
     quot = x-1
     while quot > 1:
         if x%quot == 0:
