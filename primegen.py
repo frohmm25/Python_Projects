@@ -1,15 +1,10 @@
 def isprime(x):
-    if x < 2:
+    if x <= 1:
         return False
-    
-    quot = x-1
-    while quot > 1:
-        if x%quot == 0:
+    for i in range(2, x):
+        if x%i == 0:
             return False
-        else:
-            quot -= 1
-    if quot == 1:
-        return True
+    return True
 
 def findprime(x):
     while isprime(x) == False:
